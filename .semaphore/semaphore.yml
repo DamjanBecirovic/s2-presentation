@@ -109,10 +109,10 @@ promotions:
       when: result = 'passed'
   - name: Production
     pipeline_file: production.yml
+    deployment_target: Production
   - name: Parameterized deployment
     pipeline_file: production.yml
     parameters:
       env_vars:
         - description: Where to Deploy?
           name: KUBE_NAMESPACE
-
