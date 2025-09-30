@@ -4,14 +4,6 @@ agent:
   machine:
     type: f1-standard-2
     os_image: ubuntu2204
-fail_fast:
-  stop:
-    when: branch != 'main'
-auto_cancel:
-  running:
-    when: branch != 'main'
-  queued:
-    when: branch = 'main'
 global_job_config:
   prologue:
     commands:
@@ -111,7 +103,16 @@ blocks:
       - "\U0001F6E1️ Bundler Audit"
       - "\U0001F5BC️ Webpacker Build"
 promotions:
-  - name: Production
+  - name: Staging
     pipeline_file: production.yml
     auto_promote:
-      when: result = 'passed' and branch = 'master'
+      when: result = 'passed'
+  - name: Production
+    pipeline_file: production.yml
+  - name: Parameterized deployment
+    pipeline_file: production.yml
+    parameters:
+      env_vars:
+        - description: Where to Deploy?
+          name: KUBE_NAMESPACE
+
