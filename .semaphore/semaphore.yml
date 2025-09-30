@@ -78,7 +78,7 @@ blocks:
       jobs:
         - name: Gem CVE Check
           commands:
-            - run_or_pass "bundle exec bundle-audit check --update"
+            - 'false'
     dependencies:
       - "\U0001F6E0 Setup & Cache"
   - name: "\U0001F6A6 RSpec Suite"
