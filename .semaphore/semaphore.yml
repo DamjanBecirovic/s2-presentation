@@ -5,7 +5,13 @@ agent:
     type: f1-standard-2
     os_image: ubuntu2204
 blocks:
-  - name: "Multiple jobs example"
+  - name: "Build test image"
+    task:
+      jobs:
+        - name: Build image
+          commands:
+            - echo "make build ..."
+  - name: "Run tests"
     task:
       jobs:
         - name: Tests 1/3
