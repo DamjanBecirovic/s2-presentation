@@ -5,9 +5,15 @@ agent:
     type: f1-standard-2
     os_image: ubuntu2204
 blocks:
-  - name: "Single job example"
+  - name: "Multiple jobs example"
     task:
       jobs:
-        - name: Run tests
+        - name: Tests 1/3
+          commands:
+            - echo "go test ..."
+        - name: Tests 2/3
+          commands:
+            - echo "go test ..."
+        - name: Tests 3/3
           commands:
             - echo "go test ..."
